@@ -1,0 +1,9 @@
+﻿  main.cpp
+  Core.cpp
+c:\users\巧\documents\visual studio 2015\projects\project1\project1\core.cpp(3): warning C4273: “test01”: dll 链接不一致
+  c:\users\巧\documents\visual studio 2015\projects\project1\project1\core.h(3): note: 参见“test01”的前一个定义
+  正在生成代码...
+    正在创建库 C:\Users\巧\Documents\Visual Studio 2015\Projects\Project1\Debug\bjsb.lib 和对象 C:\Users\巧\Documents\Visual Studio 2015\Projects\Project1\Debug\bjsb.exp
+main.obj : warning LNK4217: 本地定义的符号 _test01@8 在函数 _main 中导入
+  Project1.vcxproj -> C:\Users\巧\Documents\Visual Studio 2015\Projects\Project1\Debug\bjsb.exe
+  Project1.vcxproj -> C:\Users\巧\Documents\Visual Studio 2015\Projects\Project1\Debug\bjsb.pdb (Partial PDB)
