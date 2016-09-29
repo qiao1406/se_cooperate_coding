@@ -27,6 +27,9 @@
     <ClCompile Include="Core.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="IO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Station.h">
@@ -38,5 +41,8 @@
     <ClInclude Include="Core.h">
       <Filter>头文件</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
