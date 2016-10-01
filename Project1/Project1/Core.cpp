@@ -135,15 +135,14 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 			int lineIndex = Core::findLineIndex(lineName);
 			//判断是否环线，若是环线则要改变其遍历结束的点
 			SLinkList e = (lines[lineIndex].end == lines[lineIndex].head) ?
-							lines[lineIndex].head->left : lines[lineIndex].end; 
+							lines[lineIndex].head : NULL; 
 
 			//把这条线上所有的换乘点加进去
 			SLinkList p = lines[lineIndex].head;
 			do {
 				int j = p->stationIndex;
-				if (st_flag[j] == false &&
-					stations[j].isChangeStation()) {
-					st_flag[j] = true;
+				if ( st_flag[j] == false && stations[j].isChangeStation()) {
+					//st_flag[j] = true;
 					q1.push(j);
 					q2.push(1);
 					path[j][++pos[j]] = j;
@@ -159,6 +158,7 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 
 			int temp_index = q1.front();
 			q1.pop();
+			st_flag[temp_index] = true;
 			int now_time = q2.front();
 			q2.pop();
 
@@ -180,14 +180,15 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 					if (line_flag[lineIndex] == false) {
 
 						line_flag[lineIndex] = true;
+						SLinkList p = lines[lineIndex].head;
+						//判断是否环线，若是环线则要改变其遍历结束的点
+						SLinkList e = (lines[lineIndex].end == lines[lineIndex].head) ?
+							lines[lineIndex].head : NULL;
+						do {
+							int j = p->stationIndex;
+							if (st_flag[j] == false && stations[j].isChangeStation()) {
 
-						for ( unsigned int j = 0; j < stations.size(); ++j) {
-
-							if ( st_flag[j] == false
-								&& stations[j].isInLine(lineName)
-								&& stations[j].isChangeStation() ) {
-
-								st_flag[j] = true;
+								//st_flag[j] = true;
 								q1.push(j);
 								q2.push(now_time + 1);
 								// 将该站的path[]的值与temp_index的保持一致
@@ -197,7 +198,9 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 								pos[j] = pos[temp_index];
 								path[j][++pos[j]] = j;
 							}
-						}
+							p = p->right;
+						} while (p != e);
+
 					}
 
 
@@ -429,4 +432,11 @@ int Core::findLineIndex(string name) {
 	}
 
 	return r;
+}
+
+// Effects: free the linklist of lines
+void Core::freeLineLinkList() {
+	for (unsigned int i = 0; i < lines.size(); ++i) {
+		lines[i].freeStationNodes();
+	}
 }

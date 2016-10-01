@@ -122,7 +122,8 @@ void Line::freeStationNodes() {
 		p = head;
 		head = head->right;
 		delete p;
-	} while ( head != NULL );
+	} while ( head != e );
+	delete e;
 }
 
 //Require:

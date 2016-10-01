@@ -22,5 +22,6 @@ public:
 	static void updateMatrix();
 	static int findMinDist(int*s, int*dist);
 	static int findLineIndex(string name);
+	static void freeLineLinkList();
 };
 

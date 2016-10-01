@@ -27,7 +27,7 @@
     <ClCompile Include="Core.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="IO.cpp">
+    <ClCompile Include="IOLib.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -39,6 +39,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Core.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IOLib.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
