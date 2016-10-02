@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Core">
+    <Position X="0.5" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAEIABAAACAAIAICAAACAAAIIAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IOLib">
+    <Position X="5.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>IOLib.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Station">
+    <Position X="0.5" Y="3.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAAAAAAAAAEAAAAAACAgAEAAAAAABgAgAYEAA=</HashCode>
+      <FileName>Station.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Line">
+    <Position X="5.25" Y="5" Width="3.5" />
+    <AssociationLine Name="head" Type="SLinkList">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.661" Y="0.07" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAGgAAAAAAAAAAAAAAAAAAAAAAAEAAAQAABAAA=</HashCode>
+      <FileName>Line.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="end" />
+      <Field Name="head" />
+    </ShowAsAssociation>
+  </Class>
+  <Struct Name="StationNode">
+    <Position X="6.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Line.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="SLinkList" Collapsed="true">
+    <Position X="6.5" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Line.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

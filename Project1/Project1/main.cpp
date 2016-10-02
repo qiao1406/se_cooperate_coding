@@ -15,7 +15,7 @@ int main() {
 		cout << Core::stations[i].name << endl;
 	}*/
 	//IOLib::CommandOutput(Core::SPath(183,56));
-	IOLib::CommandOutput(Core::LTPath(104, 237));
+	IOLib::CommandOutput(Core::LTPath(237,104));
 	//IOLib::CommandOutput(Core::LTPath(237, 189));
 	Core::freeLineLinkList();
 	system("pause");

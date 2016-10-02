@@ -142,7 +142,7 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 			do {
 				int j = p->stationIndex;
 				if ( st_flag[j] == false && stations[j].isChangeStation()) {
-					//st_flag[j] = true;
+					st_flag[j] = true;
 					q1.push(j);
 					q2.push(1);
 					path[j][++pos[j]] = j;
@@ -188,7 +188,7 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 							int j = p->stationIndex;
 							if (st_flag[j] == false && stations[j].isChangeStation()) {
 
-								//st_flag[j] = true;
+								st_flag[j] = true;
 								q1.push(j);
 								q2.push(now_time + 1);
 								// 将该站的path[]的值与temp_index的保持一致
@@ -396,8 +396,8 @@ void Core::updateMatrix() {
 //Modified:
 //	no
 //Effects:
-//	return the min value of the array dist[i] & s[i] == 0
-//  if it cannot find this value, return -1
+//	find the min vlaue dist[u] of those elements that s[u] = 0
+//  return u, if it cannot find this index, return -1
 //Exception:
 //
 int Core::findMinDist(int*s, int*dist) {

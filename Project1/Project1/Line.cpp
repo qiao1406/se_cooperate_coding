@@ -124,6 +124,7 @@ void Line::freeStationNodes() {
 		delete p;
 	} while ( head != e );
 	delete e;
+	head = end = NULL;
 }
 
 //Require:
