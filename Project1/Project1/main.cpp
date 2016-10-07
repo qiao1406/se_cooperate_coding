@@ -11,12 +11,10 @@ using namespace std;
 
 int main() {
 	IOLib::readData("beijing-subway.txt");
-	/*for (unsigned int i = 0; i < Core::stations.size(); ++i) {
-		cout << Core::stations[i].name << endl;
-	}*/
-	//IOLib::CommandOutput(Core::SPath(183,56));
-	IOLib::CommandOutput(Core::LTPath(237,104));
-	//IOLib::CommandOutput(Core::LTPath(237, 189));
+	//IOLib::CommandOutput(Core::LTPath(183,56));
+	//IOLib::CommandOutput(Core::LTPath(151,56));
+	//IOLib::CommandOutput(Core::LTPath(237,104));
+	IOLib::CommandOutput(Core::LTPath(104,237));
 	Core::freeLineLinkList();
 	system("pause");
 	return 0;

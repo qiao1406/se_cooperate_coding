@@ -1,2 +1,4 @@
-﻿  UnitTest1.vcxproj -> C:\Users\巧\Documents\Visual Studio 2015\Projects\Project1\Debug\UnitTest1.dll
-  UnitTest1.vcxproj -> C:\Users\巧\Documents\Visual Studio 2015\Projects\Project1\Debug\UnitTest1.pdb (Partial PDB)
+﻿  unittest1.cpp
+    正在创建库 C:\Users\巧\documents\visual studio 2015\Projects\Project1\Debug\UnitTest1.lib 和对象 C:\Users\巧\documents\visual studio 2015\Projects\Project1\Debug\UnitTest1.exp
+  UnitTest1.vcxproj -> C:\Users\巧\documents\visual studio 2015\Projects\Project1\Debug\UnitTest1.dll
+  UnitTest1.vcxproj -> C:\Users\巧\documents\visual studio 2015\Projects\Project1\Debug\UnitTest1.pdb (Partial PDB)

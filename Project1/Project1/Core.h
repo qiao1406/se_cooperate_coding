@@ -16,6 +16,7 @@ public:
 	static int matrix[STATION_NUM][STATION_NUM];
 	static vector<int> SPath(int StationId1, int StationId2);
 	static vector<int> LTPath(int StationId1, int StationsId2);
+	static vector<int> getLTPath(int StationId1, int StationsId2);
 	static void addStation(string name, string lineName, int index);
 	static void updateLines(string name, SLinkList head, SLinkList end);
 	static void initMatrix();

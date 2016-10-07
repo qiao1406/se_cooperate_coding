@@ -36,6 +36,13 @@ vector<int> Core::SPath(int StationId1, int StationId2) {
 	int s[STATION_NUM];
 	vector<int> route;
 
+	//排除同站的情况
+	if (StationId1 == StationId2) {
+		cout << "错误！起始站与终点站不得相同" << endl;
+		cout << "程序非正常结束" << endl;
+		exit(1);
+	}
+
 	for ( unsigned int i = 0; i < stations.size(); ++i) {
 		s[i] = 0;
 		dist[i] = matrix[StationId1][i];
@@ -80,6 +87,26 @@ vector<int> Core::SPath(int StationId1, int StationId2) {
 	return route;
 }
 
+vector<int> Core::LTPath(int stationId1, int stationId2) {
+
+	//排除同站的情况
+	if (stationId1 == stationId2) {
+		cout << "错误！起始站与终点站不得相同" << endl;
+		cout << "程序非正常结束" << endl;
+		exit(1);
+	}
+	vector<int> v1 = Core::getLTPath(stationId1, stationId2);
+	vector<int> v2 = Core::getLTPath(stationId2, stationId1);
+
+	if (v2.size() < v1.size()) {
+		reverse(v2.begin(), v2.end());
+		return v2;
+	}
+	else {
+		return v1;
+	}
+}
+
 //Require:
 //	id of two station, should be in the range of 0~stations.size()-1
 //Modified:
@@ -90,25 +117,25 @@ vector<int> Core::SPath(int StationId1, int StationId2) {
 //	the return is in form of vector<int>
 //Exception:
 //
-vector<int> Core::LTPath(int StationId1, int StationId2) {
+vector<int> Core::getLTPath(int StationId1, int StationId2) {
 	int dist[STATION_NUM];
 	int path[STATION_NUM][LINE_NUM]; // 记录换乘的站点
 	int pos[STATION_NUM]; // 记录该站点在path[] 数组中的位置
 	int final_change_time = INT_MAX;//最终的换乘次数
+	int final_time = INT_MAX;
 	int change_time[STATION_NUM]; // 换乘次数,当该站点已经找到了终点站所在的时候才会进行设定
 	int min_dist = INT_MAX;
 	int min_index = -1;
 	bool st_flag[STATION_NUM];
-	bool line_flag[LINE_NUM];
-	bool find = false;
+	//bool line_flag[LINE_NUM];
 	queue<int> q1;//存放要查找的换乘站
 	queue<int> q2;//存放对应的换乘次数
 	vector<int> route;//存放要返回的路径
 
 	// 初始化line_flag[]
-	for ( unsigned int i = 0; i < lines.size(); ++i) {
+	/*for ( unsigned int i = 0; i < lines.size(); ++i) {
 		line_flag[i] = false;
-	}
+	}*/
 	for ( unsigned int i = 0; i < stations.size(); ++i) {
 		dist[i] = INT_MAX;
 		change_time[i] = INT_MAX;
@@ -119,9 +146,10 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 
 	st_flag[StationId1] = true;
 
+	
+
 	// 同一条线
 	if (stations[StationId1].isInSameLine(stations[StationId2])) {
-		find = true;
 		path[StationId2][++pos[StationId2]] = StationId2;
 		change_time[StationId2] = 0;
 	}
@@ -149,23 +177,26 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 				}
 				p = p->right;
 			} while (p != e);
-			line_flag[lineIndex] = true;
+			//line_flag[lineIndex] = true;
 
 		}
 
 		//对q1里面的换乘站进行查找,直到找到为止
 		while (!q1.empty()) {
 
+			//取出队列头部的一个站点（的index值）
 			int temp_index = q1.front();
 			q1.pop();
 			st_flag[temp_index] = true;
 			int now_time = q2.front();
 			q2.pop();
+			/*if (now_time > final_time) {
+				break;
+			}*/
 
-			//若此时的换乘站和终点站共线，则停止寻找
+			//若此时的换乘站和终点站共线，则记录换乘的次数
 			if (stations[temp_index].isInSameLine(stations[StationId2])) {
-				find = true;
-				//final_change_time = now_time;
+				final_time = now_time;
 				//path[temp_index][++pos[temp_index]] = temp_index;
 				path[temp_index][++pos[temp_index]] = StationId2;
 				change_time[temp_index] = now_time;
@@ -177,9 +208,9 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 					string lineName = stations[temp_index].line[i];
 					int lineIndex = Core::findLineIndex(lineName);
 
-					if (line_flag[lineIndex] == false) {
+					//if (line_flag[lineIndex] == false) {
 
-						line_flag[lineIndex] = true;
+						//line_flag[lineIndex] = true;
 						SLinkList p = lines[lineIndex].head;
 						//判断是否环线，若是环线则要改变其遍历结束的点
 						SLinkList e = (lines[lineIndex].end == lines[lineIndex].head) ?
@@ -201,7 +232,7 @@ vector<int> Core::LTPath(int StationId1, int StationId2) {
 							p = p->right;
 						} while (p != e);
 
-					}
+					//}
 
 
 				}
