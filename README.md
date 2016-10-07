@@ -1,0 +1,5 @@
+# se_cooperate_coding
+北航六系大三上软件工程课结对编程项目
+
+Project1为李文涛完成的部分，主要为核心的计算模块和文件读写模块
+BeijingSubway_co为黎柏文在李文涛完成部分基础上，添加了GUI界面
